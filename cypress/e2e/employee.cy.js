@@ -1,4 +1,4 @@
-describe('User managment', function(){
+describe('emplyee', function(){
     beforeEach(() => {
         // Bypass the login before each test
         cy.visit('/login')
@@ -8,37 +8,24 @@ describe('User managment', function(){
         cy.get('.oxd-topbar-header-breadcrumb > .oxd-text').should('be.visible')
         cy.get(':nth-child(1) > .oxd-main-menu-item').click()
     });
-
-
-    it('should display system users', () => {
-        cy.url().should('include', '/admin/viewSystemUsers')
+    it('should display employee list', () => {
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
+        cy.get('.oxd-table-cell').should('be.visible')
       })
     
-      it('should search system users', () => {
+      it('should search for employees', () => {
         cy.get('.oxd-form').within(() => {
-          cy.get('input[placeholder="Type for hints..."]').first().type('Admin')
+          cy.get('input[placeholder="Type for hints..."]').type('Cecil')
           cy.get('button[type="submit"]').click()
         })
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
       })
     
-      it('should filter user roles', () => {
-        cy.get('.oxd-form').within(() => {
-          cy.get('.oxd-select-text').eq(0).click()
-        })
-        cy.contains('Admin').click()
-        cy.get('button[type="submit"]').click()
-        cy.get('.oxd-table-card').should('have.length.at.least', 1)
-      })
+
     
-      it('should navigate to job titles', () => {
-        cy.contains('Job').click()
-        cy.contains('Job Titles').click()
-        cy.url().should('include', '/admin/viewJobTitleList')
+      it('should sort employee list', () => {
+        cy.get('.oxd-table-header-sort').first().click()
+        cy.contains('Ascending').click()
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
       })
-
-  
 })
-
