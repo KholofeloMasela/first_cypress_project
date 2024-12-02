@@ -15,29 +15,29 @@ describe('User managment', function(){
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
       })
     
-      it('should search system users', () => {
+    it('should search system users', () => {
         cy.get('.oxd-form').within(() => {
-          cy.get('input[placeholder="Type for hints..."]').first().type('Admin')
-          cy.get('button[type="submit"]').click()
+            cy.get('input[placeholder="Type for hints..."]').first().type('Admin')
+            cy.get('button[type="submit"]').click()
         })
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
-      })
+    })
     
-      it('should filter user roles', () => {
+    it('should filter user roles', () => {
         cy.get('.oxd-form').within(() => {
-          cy.get('.oxd-select-text').eq(0).click()
+        cy.get('.oxd-select-text').eq(0).click()
         })
         cy.contains('Admin').click()
         cy.get('button[type="submit"]').click()
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
-      })
+    })
     
-      it('should navigate to job titles', () => {
+    it('should navigate to job titles', () => {
         cy.contains('Job').click()
         cy.contains('Job Titles').click()
         cy.url().should('include', '/admin/viewJobTitleList')
         cy.get('.oxd-table-card').should('have.length.at.least', 1)
-      })
+    })
 
   
 })
