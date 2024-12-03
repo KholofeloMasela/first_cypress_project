@@ -6,8 +6,8 @@
   "scripts": {
     "test": "test",
     "cypress:open" : "cypress open",
-    "cypress:runDefault" : "cypress run --spec cypress/integration/pom/*.cy.js",
-    "cypress:runChrome" : "cypress run --browser chrome --spec cypress/integration/pom/*.cy.js"
+    "cypress:runDefault" : "cypress run --spec cypress/e2e/*.cy.js",
+    "cypress:runChrome" : "cypress run --browser chrome --spec cypress/e2e/*.cy.js"
   },
   "keywords": [],
   "author": "",
