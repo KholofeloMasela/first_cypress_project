@@ -17,7 +17,7 @@ pipeline {
                 script {
                     def isNodeModulesPresent = fileExists 'node_modules'
                     if (!isNodeModulesPresent) {
-                        sh 'npm ci'
+                        bat 'npm ci'
                     }
                 }
             }
@@ -25,13 +25,7 @@ pipeline {
 
         stage('Run Cypress Tests') {
             steps {
-                sh 'npx cypress run'
-            }
-            post {
-                always {
-                    archiveArtifacts artifacts: 'cypress/screenshots/**/*', allowEmptyArchive: true
-                    archiveArtifacts artifacts: 'cypress/videos/**/*', allowEmptyArchive: true
-                }
+                bat 'npx cypress run'
             }
         }
 
