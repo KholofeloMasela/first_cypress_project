@@ -28,6 +28,13 @@ pipeline {
                 bat 'npx cypress run'
             }
         }
+        stage('Save Cypress Cache') {
+           steps {
+                script {
+                    stash name: 'cypress-cache', includes: 'C:\\Users\\Jenkins\\AppData\\Local\\Cypress\\Cache/**'
+                }
+            }
+        }
 
     }
 
